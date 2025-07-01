@@ -43,7 +43,12 @@ class NewFileHandler(FileSystemEventHandler):
                 print("Servizio di inferenza avviato (in ascolto su porta 5000).")
 
 if __name__ == "__main__":
-    path_to_watch = os.path.join(os.getcwd(), "data/raw")
+    base_data_path = os.path.join(os.getcwd(), "data")
+    for folder in ["raw", "processed", "model"]:
+        full_path = os.path.join(base_data_path, folder)
+        os.makedirs(full_path, exist_ok=True)
+    path_to_watch = os.path.join(base_data_path, "raw")
+    
     event_handler = NewFileHandler()
     observer = Observer()
     observer.schedule(event_handler, path_to_watch, recursive=False)
