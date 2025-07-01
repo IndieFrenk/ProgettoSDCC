@@ -88,6 +88,12 @@ Una volta attivo il servizio (di default su `localhost:5000`), si può testare c
 
 ```bash
 curl -X POST http://localhost:5000/predict \
--H "Content-Type: application/json" \
--d '{"Quantity": 10, "UnitPrice": 2.5, "Country": "France"}'
+     -H "Content-Type: application/json" \
+     -d '{
+           "Quantity": 3,
+           "UnitPrice": 4.5,
+           "CustomerID": 12680,
+           "StockCode": "85123A",
+           "Country": "France"
+         }'
 ```
